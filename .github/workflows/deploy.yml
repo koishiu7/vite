@@ -42,8 +42,19 @@ jobs:
           name: build
           path: docs/.vitepress/dist
 
-      - name: Deploy to GitHub Pages
+     # - name: Deploy to GitHub Pages
+      #  uses: peaceiris/actions-gh-pages@v3
+      #  with:
+      #    github_token: ${{ secrets.GITHUB_TOKEN }}
+      #    publish_dir: docs/.vitepress/dist
+
+
+      - name: Deploy for Github 
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: docs/.vitepress/dist
+          branch: main
+          folder: docs/.vitepress/dist
+          # enable single-commit to reduce the repo size
+          single-commit: true
+          clean: true
+
